@@ -34,9 +34,6 @@ We have used JWT Auth [https://github.com/tymondesigns/jwt-auth] for authenitcat
 - POST `/api/v1/auth/register`
 - POST `/api/v1/auth/login`
 
-- GET `/api/v1/exchange/coins`
-- GET `/api/v1/exchange/ticker/{id}`
-
 ## Note
 Do not forget to put `Accept: application/json` in request headers, to tell our api that you are requesting json responses..
 
