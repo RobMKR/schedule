@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
 use App\Http\Controllers\Api\V1\ScheduleController;
+use App\Http\Controllers\Api\V1\Admin\AdminScheduleController;
+use App\Http\Controllers\Api\V1\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ Route::get('test', function () {
 });
 
 /** Auth routes */
-Route::group(['prefix' => 'auth'], function (\Illuminate\Routing\Router $router) {
+Route::group(['prefix' => 'auth'], function (Router $router) {
     /** Register */
     $router->post('register', 'Auth\RegisterController');
 
@@ -30,16 +33,21 @@ Route::group(['prefix' => 'auth'], function (\Illuminate\Routing\Router $router)
 
 /** Authenticated routes group */
 Route::group([
-    'prefix' => 'schedule',
-    'middleware' => ['auth:api', 'admin']
-], function (\Illuminate\Routing\Router $router) {
+    'middleware' => ['auth:api']
+], function (Router $router) {
 
-    $router->post('/', [ScheduleController::class, 'create']);
+    $router->group(['middleware' => ['admin']], function (Router $router) {
+        $router->post('schedule/', [AdminScheduleController::class, 'create']);
+        $router->put('schedule/', [AdminScheduleController::class, 'update']);
+        $router->delete('schedule/', [AdminScheduleController::class, 'delete']);
+        $router->get('schedule/accumulated', [AdminScheduleController::class, 'accumulated']);
 
-    $router->put('/{id}', [ScheduleController::class, 'update']);
+        $router->get('users/', [AdminUserController::class, 'getAll']);
+        $router->put('users/{id}', [AdminUserController::class, 'update']);
+        $router->delete('users/{id}', [AdminUserController::class, 'delete']);
+    });
 
-    $router->get('/{id}', [ScheduleController::class, 'getById']);
-
-    $router->post('/', [ScheduleController::class, 'getAll']);
+    $router->get('schedule/view', [ScheduleController::class, 'getByEmail']);
+    $router->get('schedule/me', [ScheduleController::class, 'getSelf']);
 
 });

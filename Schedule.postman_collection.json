@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "a7062b5b-dc56-4eef-b8e1-dc79331c0540",
+		"name": "Schedule",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17763206"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test\",\n    \"email\": \"admin1@invygo.com\",\n    \"password\": \"12345678\",\n    \"password_confirmation\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@invygo.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1\",\n    \"date\": \"2022-04-07\",\n    \"hours\": 12\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1\",\n    \"date\": \"2022-04-07\",\n    \"hours\": 12\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Schedule Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1\",\n    \"date\": \"2022-04-07\",\n    \"hours\": 12\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1\",\n    \"date\": \"2022-04-07\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/users/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get accumulated working hours",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1\",\n    \"date\": \"2022-04-07\",\n    \"hours\": 12\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/schedule/accumulated?period=y&sort=DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule",
+								"accumulated"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "y"
+								},
+								{
+									"key": "sort",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test_updated\",\n    \"email\": \"admin5@invygo.com\",\n    \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/users/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "Get Coworkers schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule/view?email=test@invygo.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule",
+								"view"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test@invygo.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Self schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MVwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2NTQwMTU5ODMsImV4cCI6MTY5MDAxNTk4MywibmJmIjoxNjU0MDE1OTgzLCJqdGkiOiJkRnYzZFJJYVRReGNaRlVOIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gKftk3syF6ov-KnxuvQ_AxojQi_MxaZIbp1BaHdnBok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/schedule/me",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"schedule",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

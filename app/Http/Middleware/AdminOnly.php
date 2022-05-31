@@ -18,7 +18,6 @@ class AdminOnly
      *
      * @param null $version
      * @return mixed
-     * @throws PermissionDeniedException
      */
     public function handle($request, Closure $next, $version = null)
     {

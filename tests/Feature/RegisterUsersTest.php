@@ -10,7 +10,7 @@ class RegisterUsersTest extends TestCase
     const URL = 'api/v1/auth/register';
     const METHOD = 'POST';
     const HEADERS = ['Accept' => 'application/json'];
-    const REGISTER_SUCCESS_EMAIL = 'lorem-success@example.com';
+    const REGISTER_SUCCESS_EMAIL = 'test@invygo.com';
 
     /**
      * Test case when no input is specified on register call

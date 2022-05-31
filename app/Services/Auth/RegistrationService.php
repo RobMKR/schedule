@@ -17,8 +17,12 @@ class RegistrationService
         $insert = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
         ];
+
+        if (isset($data['role'])) {
+            $insert['role'] = $data['role'];
+        }
 
         return User::query()->create($insert);
     }

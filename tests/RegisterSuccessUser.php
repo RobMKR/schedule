@@ -4,13 +4,15 @@ namespace Tests;
 
 use App\Models\User;
 use App\Services\Auth\RegistrationService;
+use App\Services\Schedule\ScheduleService;
 
 trait RegisterSuccessUser
 {
     protected bool $initialized = false;
     protected RegistrationService $registrationService;
-    protected string $successEmail = 'lorem-login-success@example.com';
-    protected string $successPassword = 'demo12345';
+    protected string $adminEmail = 'test-admin@invygo.com';
+    protected string $adminPassword = 'demo12345';
+    protected string $role = User::ROLE_ADMIN;
 
     /**
      * Register our success user to db
@@ -25,13 +27,14 @@ trait RegisterSuccessUser
 
         $successUserData = [
             "name" => "Success login user",
-            "email" => $this->successEmail,
-            "password" => $this->successPassword,
-            "password_confirmation" => $this->successPassword,
+            "email" => $this->adminEmail,
+            "role" => $this->role,
+            "password" => $this->adminPassword,
+            "password_confirmation" => $this->adminPassword,
         ];
 
-        // We will remove our test user, just to be ensure that we will not get duplicates
-        User::query()->where('email', $this->successEmail)->delete();
+        // We will remove our test user, just to ensure that we will not get duplicates
+        User::query()->where('email', $this->adminEmail)->delete();
 
         // Then we will register our success user to test the login functional
         $this->registrationService->register($successUserData);

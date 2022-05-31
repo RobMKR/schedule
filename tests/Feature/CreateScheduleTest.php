@@ -2,28 +2,29 @@
 
 namespace Tests\Feature;
 
+use App\Services\Schedule\ScheduleService;
 use Tests\GetAuthToken;
 use Tests\TestCase;
 
-class GetCoinsTest extends TestCase
+class CreateScheduleTest extends TestCase
 {
     use GetAuthToken;
 
-    const URL = 'api/v1/exchange/coins?';
-    const METHOD = 'GET';
+    const URL = 'api/v1/schedule';
+    const METHOD = 'POST';
     const HEADERS = ['Accept' => 'application/json'];
 
     /**
      * Test case when no input is specified on login call
      */
-    public function testCoinsInvalidSortParam()
+    public function testEmptyParams()
     {
         $headers = array_merge(self::HEADERS, [
             'Authorization' => 'Bearer ' . $this->getToken()
         ]);
 
         $data = [
-            'sort' => 'somethingNotAscAndNotDesc'
+
         ];
 
         $this->json(self::METHOD, self::URL, $data, $headers)
@@ -31,27 +32,38 @@ class GetCoinsTest extends TestCase
             ->assertJson([
                 "type" => "ERR_INVALID",
                 "errors" => [
-                    "sort" => ["The selected sort is invalid."]
+                    "userId" => ["The user id field is required."],
+                    "date" => ["The date field is required."],
+                    "hours" => ["The hours field is required."],
                 ]
             ]);
     }
 
-    public function testCoinsSuccess()
+    public function testSuccess()
     {
         $headers = array_merge(self::HEADERS, [
             'Authorization' => 'Bearer ' . $this->getToken()
         ]);
 
-        $this->json(self::METHOD, self::URL, [], $headers)
+        $data = [
+            "userId" => $this->getId(),
+            "date" => "2022-01-01",
+            "hours" => 10,
+        ];
+
+        $this->json(self::METHOD, self::URL, $data, $headers)
             ->assertStatus(200)
             ->assertJsonStructure([
                 "data" => [
-                    '*' => [
-                        "code",
-                        "name"
-                    ]
+                    "user_id",
+                    "date",
+                    "hours",
+                    "updated_at",
+                    "created_at",
+                    "id",
                 ],
                 "metadata" => []
             ]);
+
     }
 }

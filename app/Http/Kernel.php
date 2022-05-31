@@ -3,7 +3,6 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminOnly;
-use App\Http\Middleware\ApiDetectLatestVersion;
 use App\Http\Middleware\ApiVersion;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

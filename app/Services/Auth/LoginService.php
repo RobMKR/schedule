@@ -27,7 +27,8 @@ class LoginService
 
         return [
             'token' => $token,
-            'expires_in' => Auth::factory()->getTTL()  * 60
+            'expires_in' => Auth::factory()->getTTL()  * 60,
+            'id' => Auth::id()
         ];
     }
 }

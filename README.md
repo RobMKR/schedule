@@ -1,11 +1,7 @@
-<p align="center">Crypto API</p>
-
-Tag V1.0.2
+Schedule API
 
 ## Requirements
-- PHP 7.4
-- Mysql 5.5 or Above
-- Docker
+- Docker Should be enough
 
 ## Installation
 
@@ -30,15 +26,16 @@ V1, V2, V3 folders, route files and middleware for switching betweem the is crea
 ## Auth
 We have used JWT Auth [https://github.com/tymondesigns/jwt-auth] for authenitcating users
 
+## Admin User
+We will create default ADMIN user under `admin@invygo.com` and password will be from .env (default: 12345678)
+
+## Accumulated filters
+`/api/v1/schedule/accumulated?period=y&sort=DESC` 
+Accumulated request supports 2 filters: `period` and `sort`
+`period` can be y/m/q/w | sort can be ASC/DESC
+
 ## Routes
-- POST `/api/v1/auth/register`
-- POST `/api/v1/auth/login`
+Routes will be in project: Schedule.postman_collection.json (import to postman, and directly use)
 
 ## Note
-Do not forget to put `Accept: application/json` in request headers, to tell our api that you are requesting json responses..
-
-## PS
-Thanks and regards, coded with love by Rob :)
-You can find a postman collection right here in the project source files: [Collection](https://github.com/RobMKR/cryptoapi/edit/master/Crypto.postman_collection.json)
-
-The api is hosted on a VPS: [API](http://69.55.59.179)
+Do not forget to put `Accept: application/json` and `Content-Type: application/json` in request headers, to tell our api that you are requesting json responses..

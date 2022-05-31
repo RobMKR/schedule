@@ -14,6 +14,11 @@ trait GetAuthToken
     protected static $token;
 
     /**
+     * @var integer|null
+     */
+    protected static $id;
+
+    /**
      * Get token and store to static variable $token
      *
      * @throws \App\Exceptions\V1\WrongCredentialsException
@@ -26,11 +31,12 @@ trait GetAuthToken
         $this->registerSuccessUser();
 
         $payload = $loginService->login([
-            'email' => $this->successEmail,
-            'password' => $this->successPassword
+            'email' => $this->adminEmail,
+            'password' => $this->adminPassword
         ]);
 
         $this::$token = $payload['token'] ?? null;
+        $this::$id = $payload['id'];
     }
 
     /**
@@ -44,5 +50,13 @@ trait GetAuthToken
         }
 
         return $this::$token;
+    }
+
+    protected function getId() {
+        if (!$this::$id) {
+            $this->init();
+        }
+
+        return $this::$id;
     }
 }

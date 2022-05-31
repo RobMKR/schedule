@@ -60,8 +60,8 @@ class LoginUsersTest extends TestCase
         $this->registerSuccessUser();
 
         $successUserData = [
-            "email" => $this->successEmail,
-            "password" => $this->successPassword
+            "email" => $this->adminEmail,
+            "password" => $this->adminPassword
         ];
 
         $this->json(self::METHOD, self::URL, $successUserData, self::HEADERS)
@@ -70,12 +70,14 @@ class LoginUsersTest extends TestCase
                 "data" => [
                     "token",
                     "expires_in",
+                    "id"
                 ],
                 "metadata" => [
                     "me" => [
                         "id",
                         "name",
                         "email",
+                        "role",
                         "created_at",
                         "updated_at",
                     ]
