@@ -6,17 +6,25 @@ Schedule API
 ## Installation
 
 - Clone the project to the directory you wish
-- `cd [directory]`
-- `composer install`
-- `cp .env.example .env`.
-- Update .env database section and set you credentials
-- Update .env cache section and put redis/memcached credentials if you have, if no it will use you hard drive as cache storage.
-- Run `php artisan key:generate` to generate new key for app.
-- Run `php artisan jwt:secret` to generate new key for jwt auth.
-- Run `php artisan migrate` to run a migrations
-- Run `sudo -u [Your nginx or apache user, commonly www-data] php artisan serve` Most of cases your user will not have access to /tmp 
-directory which is required for hosting laravel as itself without use of apache or nginx
-
+- `cd schedule`
+- Run command to run container for installing dependencies
+```
+  docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php80-composer:latest \
+    composer install --ignore-platform-reqs
+```
+- Copy env: `cp .env.example .env`
+- Run `vendor/bin/sail up -d`
+- Wait for 20-30 sec until mysql will be ready for connections
+- Run `vendor/bin/sail artisan migrate`
+- Run `vendor/bin/sail artisan key:generate`
+- Run `vendor/bin/sail artisan jwt:secret`
+- Run `vendor/bin/sail test` to run tests
+- Add postman collection to postman
+- Enjoy
 
 ## Versioning
 Currently there is only one version supported [V1]
